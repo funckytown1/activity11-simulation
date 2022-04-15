@@ -1,6 +1,6 @@
 ---
 title: "Activity 11 - Simulation"
-author: "Name"
+author: "Nathan Funckes"
 output: github_document
 ---
 
@@ -26,7 +26,9 @@ One way to make sure that you get similar results each time is to always run all
 For this activity, you will need the `{tidyverse}`.
 
 **delete this line and load `{tidyverse}`**
-
+```{r load tidyverse, message= FALSE}
+library(tidyverse)
+```
 
 ## Exploration
 
@@ -59,6 +61,10 @@ ggplot(norm_samp_1000, aes(x = values)) +
 
 Using `norm_samp_1000`, obtain the mean and standard deviation of this sample?
 
+```{r summary statistics for norm_samp_1000}
+mean(norm_samp_1000$values)
+sd(norm_samp_1000$values)
+```
 
 
 Now, create a new simulation.
@@ -66,6 +72,12 @@ In this you will obtain a sample of size 30 from from a Normally distributed var
 How do the mean and standard deviation compare to your answers above?
 
 
+```{r creating a new sample}
+set.seed(518)
+norm_samp_30 <- rnorm(30, 50, 10)
+mean(norm_samp_30)
+sd(norm_samp_30)
+```
 
 ### Non-normally distributed population
 
@@ -73,7 +85,15 @@ Using a similar process, obtain Exponentially distributed variable (`?rexp`) wit
 Obtain a sample of 1,000 observations and a sample of 30 observations.
 Then, calculate the mean and standard deviation of each sample and discuss how the values are similar and how they differ.
 
-
+```{r}
+set.seed(518)
+exp_samp_1000 <- rexp(1000, rate = 0.02)
+exp_samp_30 <- rexp(30, rate = 0.02)
+mean(exp_samp_1000)
+sd(exp_samp_1000)
+mean(exp_samp_30)
+sd(exp_samp_30)
+```
 
 
 ![](README-img/noun_pause.png) **Planned Pause Point**: If you have any questions, contact your instructor. Otherwise feel free to continue on.
